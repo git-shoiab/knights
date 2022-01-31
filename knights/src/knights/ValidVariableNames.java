@@ -17,7 +17,6 @@ public class ValidVariableNames {
 		//int hei ght;//names cannot have space in between - invlid
 		
 		//int void;//invalid - names cannot be keywords
-		
-		
+				
 	}
 }
