@@ -35,9 +35,6 @@ public class VariableDemo2 {
 		
 		boolean married=true;
 				married=false;
-				
-				
-		
 		
 	}
 }
