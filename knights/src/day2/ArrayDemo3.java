@@ -19,5 +19,17 @@ public class ArrayDemo3 {
 		ue[1][0]=109010;
 		System.out.println(ue[1][0]);
 		
+		int a[]=new int[5];
+		met(a);
+		met2(a);
+		
+		met(new int[] {1,2,3,4});//anonymous array
+	}
+	
+	public static void met(int a[]) {
+		
+	}
+	public static void met2(int bb[]) {
+		
 	}
 }
