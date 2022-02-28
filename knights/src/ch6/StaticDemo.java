@@ -1,4 +1,5 @@
 package ch6;
+//https://fluvid.com/videos/detail/QKZX3hdKdzIRL1eeg#.YhzX31pcHmM.link
 class Parent{
 	int i=20;
 	static void met(int i) {
