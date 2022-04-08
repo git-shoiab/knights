@@ -1,10 +1,18 @@
 package revision;
+
+import java.lang.reflect.Field;
+
 //https://fluvid.com/videos/detail/6B-o2iOa4pC9Az2kB#.YlBDGb3eXoQ.link
+//https://fluvid.com/videos/detail/_LkeEcqkyof3_7L-A#.YlBGa_uX4Q4.link
 public class GenericsDemo {
 	public static void main(String[] args) {
 		GoodPaintBrush<Water> brush=WaterContainer.getBrush();
 		Water water=brush.getItem();
 		System.out.println(water);
+		
+		GoodPaintBrush<Paint> pbrush=PaintContainer.getBrush();
+		Paint paint=pbrush.getItem();
+		System.out.println(paint);
 	}
 }
 
@@ -41,6 +49,7 @@ class GoodFraudPaintBrush{
 }
 
 class GoodPaintBrush<T>{
+	@Inject(className ="revision.BluePaint" )
 	T item;
 
 	public T getItem() {
@@ -54,15 +63,37 @@ class GoodPaintBrush<T>{
 class Water{}
 class WaterContainer {
 	public static GoodPaintBrush<Water> getBrush() {
+		try {
 		GoodPaintBrush<Water> brush=new GoodPaintBrush<Water>();
-		brush.setItem(new Water());
+		Class c=brush.getClass();
+		Field field=c.getDeclaredField("item");
+		Inject in=field.getAnnotation(Inject.class);
+		if(in!=null) {
+			brush.setItem(new Water());
+		}
 		return brush;
+		}catch(Exception e) {
+			System.out.println(e);
+			return null;
+		}
 	}
 }
 class PaintContainer {
 	public static GoodPaintBrush<Paint> getBrush() {
-		GoodPaintBrush<Paint> brush=new GoodPaintBrush<>();
-		brush.setItem(new RedPaint());
-		return brush;
+		try {
+			GoodPaintBrush<Paint> brush=new GoodPaintBrush<>();
+			Class c=brush.getClass();
+			Field field=c.getDeclaredField("item");
+			Inject in=field.getAnnotation(Inject.class);
+			if(in!=null) {
+				String classname=in.className();
+				Paint paint=(Paint)Class.forName(classname).newInstance();
+				brush.setItem(paint);
+			}
+			return brush;
+			}catch(Exception e) {
+				System.out.println(e);
+				return null;
+			}
 	}
 }
