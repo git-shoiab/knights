@@ -2,7 +2,6 @@ package threadpack;
 //https://fluvid.com/videos/detail/w6e8gcQ7V8Hny8zgw#.YjlfwuJrvUc.link
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-
 public class ThreadDemo2 {
 	public ThreadDemo2() {
 		ExecutorService es=Executors.newFixedThreadPool(1);
@@ -21,8 +20,6 @@ public class ThreadDemo2 {
 		}
 	}
 }
-
-
 class ThreadJob implements Runnable{
 	@Override
 	public void run() {

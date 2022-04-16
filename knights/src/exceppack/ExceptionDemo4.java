@@ -12,7 +12,6 @@ public class ExceptionDemo4 {
 		}
 	}
 }
-
 class Dog{
 	public void play(String item)throws DogBiteException,DogBarkException {
 		if(item.equals("stick")) {
@@ -23,7 +22,6 @@ class Dog{
 		}
 	}
 }
-
 class DogBiteException extends Exception{
 	String msg;
 	public DogBiteException(String msg) {
