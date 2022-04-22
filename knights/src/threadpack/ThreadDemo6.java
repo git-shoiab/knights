@@ -21,7 +21,7 @@ class DBConnection{
 	}
 	private static DBConnection dbcon;
 	//Double Dip Problem is solved through synchronization
-	synchronized public static DBConnection getDBConnectionObj() {
+	 public static DBConnection getDBConnectionObj() {
 		if(dbcon==null) {
 			dbcon=new DBConnection();
 			try {Thread.sleep(1000);}catch(Exception e) {}
